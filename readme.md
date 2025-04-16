@@ -43,3 +43,58 @@ spring.datasource.url=jdbc:h2:mem:estudiantes
 spring.datasource.username=sa
 spring.datasource.password=sa
 spring.h2.console.enabled=true
+```
+Puedes acceder a la consola H2 en la siguiente ruta después de iniciar la aplicación.
+http://localhost:8080/h2-console 
+
+Swagger
+La documentación de la API está disponible en http://localhost:8080/swagger-ui.html.
+
+## Ejecución
+- Usando Maven Wrapper
+En la raíz del proyecto, ejecuta:
+```
+mvn spring-boot:run
+```
+
+- Usando un IDE
+
+Importa el proyecto como un proyecto Maven.
+
+Ejecuta la clase principal: CursoFullStackBackendApplication.
+
+## Endpoints principales
+Estudiantes\
+GET /estudiantes: Lista todos los estudiantes.\
+GET /estudiantes/{codigo}: Obtiene un estudiante por su código.\
+GET /estudiantesPorPorgrama?programaId={programaId}: Lista estudiantes por programa académico.
+
+Pagos\
+GET /pagos: Lista todos los pagos.\
+GET /pagos/{id}: Obtiene un pago por su ID.\
+GET /estudiantes/{codigo}/pagos: Lista pagos de un estudiante por su código.\
+GET /pagosPorStatus?status={CREADO|VALIDADO|RECHAZADO}: Lista pagos por estado.\
+GET /pagos/PorTipo?type={EFECTIVO|CHEQUE|TRANSFERENCIA|DEPOSITO}: Lista pagos por tipo.\
+POST /pagos: Registra un pago con archivo adjunto.\
+PUT /pagos/{id}/actualizarPago: Actualiza el estado de un pago.\
+GET /pagoFile/{pagoId}: Descarga el archivo adjunto de un pago.
+
+## Estructura del proyecto
+src/\
+├── main/\
+│   ├── java/\
+│   │   └── com.systempaymentut.CursoFullStackBackend/\
+│   │       ├── entities/\
+│   │       ├── enums/\
+│   │       ├── repository/\
+│   │       ├── services/\
+│   │       └── web/\
+│   └── resources/\
+│       ├── META-INF/\
+│       ├── static/\
+│       ├── templates/\
+│       ├── application.properties\
+└── test/
+
+## Contribuciones
+¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor abre un issue o envía un pull request.
